@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Trattoria Moderna – cuisine italienne contemporaine au cœur de Lausanne. Menu de saison, vins bio et ambiance chaleureuse.">
+    <title>Trattoria Moderna | Restaurant italien à Lausanne</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Preload / préconnect pour accélérer le rendu -->
+    <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap"></noscript>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap"></noscript>
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+
+    <!-- Favicon principal -->
+    <link rel="icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+
+    <!-- .ico pour vieux navigateurs -->
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+
+    <!-- Apple touch -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Web app / Android -->
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+    <!-- Optionnel SVG -->
+    <link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
+
+    <!-- Longue feuille de styles inline : différée pour réduire le blocage initial -->
+    <style id="deferred-styles" media="print">
+        /* Utiliser Montserrat partout */
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+        body, html {
+            height: 100%;
+            line-height: 1.8;
+            scroll-padding-top: 88px;
+        }
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("images/background.jpeg");
+            min-height: 100%;
+        }
+        .af-bar .af-button { padding: 16px; }
+        .af-bar .af-bar-item {
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Slideshow bandes latérales */
+        .slideshow-container {
+            position: relative;
+            /* full-bleed sur toute la largeur du viewport */
+            width: 100vw;
+            max-width: none;
+            /* recentrer la boîte full-bleed dans son parent */
+            margin-left: calc(50% - 50vw);
+            margin-right: 0;
+            height: 397px;      /* hauteur desktop réduite de moitié */
+            overflow: hidden;   /* s'assurer que le contenu est clipé */
+            border-radius: 0;       /* full-bleed, pas d'arrondi externe */
+            box-sizing: border-box;
+            box-shadow: 0 18px 42px rgba(0,0,0,0.22);
+        }
+        .slide-nav-left, .slide-nav-right {
+            position: absolute;
+            top: 0;
+            width: 18%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 10; /* <- valeur réduite pour passer derrière le menu */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            user-select: none;
+        }
+        .slide-nav-left:hover, .slide-nav-right:hover {
+            background: rgba(0,0,0,0.18);
+        }
+        .slide-nav-left {
+            left: 0;
+            border-radius: 8px 0 0 8px;
+        }
+        .slide-nav-right {
+            right: 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .slide-arrow {
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 0 2px 8px #000;
+            pointer-events: none;
+        }
+        @media (max-width: 600px) {
+            .slide-nav-left, .slide-nav-right { width: 28%; }
+            .slide-arrow { font-size: 2em; }
+        }
+        /* Centrage de la légende du slideshow */
+        .slideshow-container .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background: rgba(0,0,0,0.45);
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 1.3em;
+            text-align: center;
+            min-width: 120px;
+            max-width: 80%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            /* Ajout pour rendre le lien cliquable sur toute la zone */
+            cursor: pointer;
+            display: flex;
+            align-items: center;    /* centre verticalement le contenu */
+            justify-content: center;/* centre horizontalement le contenu */
+        }
+        .slideshow-container .text a {
+            color: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        .slideshow-container .text a:hover {
+            text-decoration: underline;
+        }
+        .af-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .af-top .af-bar {
+            position: relative;
+            z-index: inherit;
+        }
+        /* S'assurer que le menu latéral mobile reste au-dessus du slideshow */
+        #mySidebar {
+            position: fixed;
+            z-index: 2000;
+        }
+        /* Ajout effet fondu pour le slideshow */
+        .mySlides {
+            opacity: 0;
+            transition: opacity 0.7s;
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 110%;
+        }
+        .mySlides.active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+            height: 110%;
+        }
+
+        /* Styles pour la carte Google Maps sous la section CONTACT */
+        /* NOTE: on renforce ici la hauteur minimale du conteneur afin que l'iframe ne s'effondre
+           lorsque le layout devient empilé (fenêtré / mobile). */
+        .map-container {
+            display:block;
+            width: 100%;
+            max-width: 900px;
+            margin: 12px auto 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            /* garantir une hauteur utilisable sur desktop / fenêtré */
+            min-height: 320px;
+            /* height:auto pour permettre au flex d'étirer si nécessaire */
+            height: auto;
+            box-sizing: border-box;
+        }
+        .map-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;       /* remplit la hauteur du conteneur */
+            min-height: 320px;  /* sécurité si parent ne force pas la hauteur */
+            border: 0;
+        }
+
+        .map-row {
+            display: flex;
+            gap: 16px;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 0 8px;
+        }
+
+        .map-row .map-container {
+            flex: 1 1 520px;
+            max-width: none;
+            margin: 0;
+            display: flex;           /* permet à l'iframe de remplir verticalement */
+            border-radius: 8px;
+            overflow: hidden;
+            /* s'assurer qu'en mode multi-colonnes la carte aura une hauteur correcte */
+            min-height: 320px;
+        }
+
+        .map-info {
+            flex: 0 1 300px;
+            min-width: 260px;
+            max-width: 340px;
+            background: #181818;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 18px 32px rgba(0,0,0,0.42), 0 6px 20px rgba(0,0,0,0.36);
+            color: #f5f5f5;
+            line-height: 1.4;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .map-info h4 { margin: 0 0 8px; font-size: 1.05rem; color:#ffffff; }
+        .map-info p { margin: 6px 0; font-size: 0.98rem; color:#e2e2e2; }
+        .map-info .coords { font-family: monospace; font-weight:600; }
+        .map-info .map-cta {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+        }
+        .map-info .map-cta .af-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+        }
+        /* iframe prend toute la hauteur du conteneur map-container */
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            /* en mode étroit : empiler, réduire les hauteurs minimales */
+            .map-row { flex-direction: column; }
+            .map-info {
+                flex-basis: 100%;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+            }
+            .map-row .map-container { flex-basis: 100%; min-height: 220px; }
+            .map-row { align-items: stretch; margin: 16px auto; }
+            .map-container iframe { min-height: 220px; height: 100%; }
+        }
+
+        /* Nouvelle classe pour agrandir les titres de section */
+        .section-title {
+            font-size: 2.2rem;      /* plus grand sur desktop */
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6em;
+            text-transform: uppercase;
+        }
+        @media (max-width: 900px) {
+            .section-title { font-size: 1.9rem; }
+        }
+        @media (max-width: 600px) {
+            .section-title { font-size: 1.5rem; }
+        }
+
+    /* Classe pour le titre héro 'La modernité italienne.' (agrandi et responsive) */
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: 0.01em;
+            text-transform: none; /* garder la casse d'origine */
+            display: inline-block;
+            font-family: "Playfair Display", serif;
+        }
+        .hero-content {
+            padding: 48px;
+            padding-top: calc(48px + 68px);
+        }
+        @media (max-width: 900px) {
+            .hero-title { font-size: 2.6rem; }
+        }
+        @media (max-width: 600px) {
+            .hero-title { font-size: 1.8rem; }
+            .hero-content {
+                padding: 32px;
+                padding-top: calc(32px + 60px);
+            }
+        }
+
+        /* Agrandir bouton ENVOYER : considérer icône+texte comme un seul bloc centré */
+        .contact-submit {
+            font-size: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* centre le bloc .contact-content */
+            padding: 12px 28px;
+            font-weight: 700;
+            margin: 0 auto;
+            min-width: 200px;
+            box-sizing: border-box;
+        }
+        /* le bloc qui contient icône + texte (considéré comme un seul élément) */
+        .contact-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;               /* espace entre icône et texte */
+            justify-content: center; /* centre l'icône+texte internement */
+        }
+        .contact-content .fa {
+            font-size: 1.25em;
+            line-height: 1;
+            display: inline-block;
+            width: 1.25em;           /* largeur fixe pour l'icône */
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .contact-submit { padding: 10px 18px; font-size: 1.05rem; min-width: 180px; }
+            .contact-content .fa { font-size: 1.05em; width: 1.05em; }
+        }
+
+    /* Agrandir le logo texte dans la barre (Trattoria Moderna) */
+        .site-logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+    /* Arrondir les cartes dans la section LA CARTE */
+        #pricing .af-ul.af-white.af-center.af-card {
+            border-radius: 12px;
+            overflow: hidden; /* évite que les éléments enfants débordent des coins arrondis */
+        }
+        /* Optionnel : arrondir légèrement les éléments li de tête si nécessaire */
+        #pricing .af-ul.af-white.af-center.af-card > li:first-child {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        /* --- AJOUT : augmenter l'effet d'ombre au survol pour les cartes de prix --- */
+        /* transition fluide pour box-shadow (et optionnellement transform) */
+        #pricing .af-ul.af-card {
+            transition: box-shadow 250ms cubic-bezier(.2,.8,.2,1), transform 250ms cubic-bezier(.2,.8,.2,1);
+            will-change: box-shadow, transform;
+        }
+        /* ombre augmentée et léger "lift" au survol */
+        #pricing .af-ul.af-card:hover {
+            box-shadow: 0 20px 48px rgba(0,0,0,0.22), 0 6px 20px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+        }
+
+        /* Slideshow: coins arrondis et images qui couvrent le conteneur */
+        .slideshow-container {
+            position: relative;
+            /* full-bleed sur toute la largeur du viewport */
+            width: 100vw;
+            max-width: none;
+            /* recentrer la boîte full-bleed dans son parent */
+            margin-left: calc(50% - 50vw);
+            margin-right: 0;
+            height: 397px;          /* hauteur desktop réduite de moitié */
+            border-radius: 0;       /* full-bleed, pas d'arrondi externe */
+            overflow: hidden;       /* clipper tout ce qui dépasse */
+            padding-bottom: 0;
+            margin-bottom: 0px;
+            box-shadow: 0 18px 42px rgba(0,0,0,0.22);
+        }
+        .slideshow-container img,
+        .slideshow-container .mySlides img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* couvrir proprement le conteneur sans déformer */
+        }
+        @media (max-width: 600px) {
+            .slideshow-container {
+                height: 291px;
+                padding-bottom: 19px;
+                margin-bottom: -19px;
+            }
+        }
+
+        /* --------------- AJOUT : espacement du formulaire CONTACT --------------- */
+        /* Desktop : laisser 50px de chaque côté */
+        @media (min-width: 601px) {
+            #contact form {
+                margin: 0 auto;
+                box-sizing: border-box;
+                width: 70%;
+                max-width: none;
+            }
+        }
+        /* Mobile : prendre la fenêtre complète */
+        @media (max-width: 600px) {
+            #contact form {
+                margin: 0;               /* plein écran sur smartphone */
+                box-sizing: border-box;
+                width: 100%;
+            }
+        }
+        /* S'assurer que les champs remplissent l'espace disponible */
+        #contact form .af-input,
+        #contact form textarea,
+        #contact form select {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+		/* Ajout : marges 50px (desktop) et full-bleed sans bordure (smartphone) */
+		@media (min-width: 601px) {
+			/* Le slideshow prend la largeur du conteneur moins 100px (50px de chaque côté) */
+			.slideshow-container {
+				width: calc(100% - 100px);
+				max-width: none;
+				margin-left: 50px;
+				margin-right: 50px;
+				/* légèrement arrondi en desktop pour l'esthétique */
+				border-radius: 8px;
+				overflow: hidden;
+				box-sizing: border-box;
+                /* hauteur desktop réduite de moitié */
+                height: 397px;
+                padding-bottom: 0;
+                margin-bottom: 48px;
+			}
+			/* ajustement optionnel des zones de navigation latérales lorsque le conteneur n'est pas full-bleed */
+			.slide-nav-left, .slide-nav-right {
+				width: 10%;
+			}
+		}
+
+        @media (max-width: 600px) {
+			/* Sur smartphone : full-bleed — aucune marge, pas d'arrondi */
+			.slideshow-container {
+				width: 100vw;
+				max-width: none;
+				margin-left: calc(50% - 50vw);
+				margin-right: 0;
+				border-radius: 0;
+				overflow: hidden;
+                /* hauteur mobile réduite de moitié */
+                height: 291px;
+                margin-bottom: 24px;
+			}
+			.slide-nav-left, .slide-nav-right {
+				/* restaurer la largeur plus large sur mobile */
+				width: 28%;
+			}
+		}
+
+        /* Styles pour afficher prix original barré + prix réduit (mis à jour) */
+        .price-row {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0;
+            min-height: 110px;
+            box-sizing: border-box;
+            padding: 8px 0 4px;
+        }
+        .price-stack {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 86px;
+        }
+        .price-stack--discount {
+            transform: translateY(10%);
+        }
+        .original-price {
+            position: absolute;
+            top: 43%;
+            left: 50%;
+            transform: translate(-50%, -72%);
+            color: rgba(255,255,255,0.2);
+            text-decoration: line-through;
+            font-size: 2.5rem;
+            font-weight: 700;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            margin: 0;
+            transition: transform 200ms ease, top 200ms ease;
+        }
+        .discounted-price {
+            position: relative;
+            z-index: 1;
+            color: #f5f5f5;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1;
+        }
+        .price-note {
+            font-size: 0.95rem;
+            color: inherit;
+            z-index: 1;
+            margin-top: 12px;
+            margin-bottom: -6px;
+        }
+
+        @media (max-width: 600px) {
+            .price-row {
+                min-height: 80px;
+                padding: 6px 0 4px;
+            }
+            .price-stack {
+                min-height: 64px;
+            }
+            .price-stack .original-price {
+                font-size: 1.85rem;
+                top: 44%;
+                transform: translate(-50%, -76%);
+            }
+            .price-stack .discounted-price {
+                font-size: 1.65rem;
+            }
+        }
+
+        /* Equal-height cards in the pricing row (improved) */
+@media (min-width: 601px) {
+    /* mettre la rangée en flex pour aligner les colonnes */
+    #pricing .af-row-padding {
+        display: flex;
+        /* autoriser le passage à la ligne lorsque l'espace est insuffisant */
+        flex-wrap: wrap;
+        align-items: stretch; /* force les colonnes à la même hauteur */
+        gap: 16px;
+        justify-content: center;
+    }
+    /* chaque colonne devient un conteneur flex qui s'étire */
+    #pricing .af-row-padding .af-col {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        /* permettre au navigateur de réduire jusqu'à une largeur minimale raisonnable
+           puis forcer le wrapping si l'espace total n'est pas suffisant */
+        flex: 1 1 384px;
+        min-width: 384px;
+        max-width: 432px;
+        width: auto !important;
+    }
+    /* la carte prend toute la hauteur de la colonne */
+    #pricing .af-col .af-ul.af-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* éviter les espaces entre items */
+            flex: 1 1 auto; /* IMPORTANT : permet d'\u00e9galiser la hauteur */
+            /* Hauteur fixe des cartes sur desktop (définie en pixels) */
+            height: 550px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    /* Pousser l'espace libre au-dessus du bloc prix pour que le prix et la bande grise restent adjacents */
+    #pricing .af-ul.af-card > li.price-li { margin-top: auto; }
+    /* S'assurer qu'aucun espace ne sépare la bande grise du bloc prix */
+    #pricing .af-ul.af-card > li.af-light-grey.af-padding-24 { margin-top: 0; }
+    /* s'assurer que le bloc de prix ne pousse pas la carte inutilement */
+    .price-row {
+        flex: 0 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /* garder le bouton collé en bas sans shrink
+       et AFFICHER la bande grise comme sur mobile */
+    #pricing .af-ul.af-card > li.af-light-grey.af-padding-24 {
+        flex-shrink: 0;
+    }
+}
+
+/* mobile : comportement empilé inchangé */
+@media (max-width: 600px) {
+    #pricing .af-row-padding { display: block; }
+    #pricing .af-row-padding .af-col { display: block; }
+    #pricing .af-col .af-ul.af-card { display: block; flex: none; }
+}
+
+        /* --- Thème sombre Trattoria Moderna --- */
+        html, body {
+            background-color: #352219;
+            color: #f1f1f1;
+        }
+        body {
+            background-color: #1b1b1b;
+        }
+        .af-white, .af-hover-white:hover {
+            background-color: #131313 !important;
+            color: #f5f5f5 !important;
+        }
+        .af-black, .af-hover-black:hover {
+            background-color: #f5f5f5 !important;
+            color: #141414 !important;
+        }
+        .af-light-grey, .af-hover-light-grey:hover,
+        .af-light-gray, .af-hover-light-gray:hover {
+            background-color: #1b1b1b !important;
+            color: #f2f2f2 !important;
+        }
+        .af-dark-grey, .af-hover-dark-grey:hover,
+        .af-dark-gray, .af-hover-dark-gray:hover {
+            background-color: #050505 !important;
+            color: #fafafa !important;
+        }
+        .af-text-grey, .af-hover-text-grey:hover,
+        .af-text-gray, .af-hover-text-gray:hover {
+            color: #bdbdbd !important;
+        }
+        #myNavbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        #myNavbar .af-bar-item {
+            float: none !important;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-left: auto;
+        }
+        .navbar-links .af-bar-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar-links .af-bar-item .fa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05em;
+        }
+        .af-bar.af-white {
+            background-color: #0f0f0f !important;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+        }
+        .af-bar.af-white .af-button {
+            color: #f5f5f5 !important;
+        }
+        .af-bar.af-white .af-button:hover {
+            background-color: #f5f5f5 !important;
+            color: #111 !important;
+        }
+        .site-logo {
+            color: #ffffff;
+        }
+        .navbar-logo {
+            height: 76px;
+            width: auto;
+            display: block;
+            padding: 6px 14px;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            background-color: rgba(0,0,0,0.24);
+            border-radius: 18px;
+            border: 2px solid #ffffff;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+        }
+        .af-button {
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+        .af-button:not(.af-bar-item) {
+            border-radius: 999px;
+        }
+        .af-button:hover {
+            background-color: #f5f5f5 !important;
+            color: #111 !important;
+        }
+        .af-button.af-white {
+            border: 1px solid rgba(255,255,255,0.28);
+        }
+        .af-button.af-white:hover {
+            background-color: #1f1f1f !important;
+            color: #f5f5f5 !important;
+        }
+        .af-button.af-black {
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .af-card, .af-card-2, .af-card-4, .af-hover-shadow:hover {
+            background-color: #151515;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.55), 0 10px 24px rgba(0,0,0,0.35);
+        }
+        .af-ul.af-white li {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: #e6e6e6;
+        }
+        .af-ul.af-white li:last-child {
+            border-bottom: none;
+        }
+        #pricing .af-ul.af-white li {
+            color: #eaeaea;
+        }
+        #pricing .af-ul.af-white li strong {
+            color: #ffffff;
+        }
+        #pricing .af-ul.af-white li.af-light-grey {
+            color: #f5f5f5 !important;
+        }
+        #pricing .af-ul.af-white.af-center.af-card > li:first-child {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+        }
+        #pricing .af-ul.af-white.af-center.af-card > li.af-light-grey {
+            background-color: #141414 !important;
+        }
+        .af-container, .af-panel {
+            color: inherit;
+        }
+        .map-container {
+            box-shadow: 0 22px 38px rgba(0,0,0,0.55), 0 12px 24px rgba(0,0,0,0.4);
+        }
+        .map-info .map-cta .af-button {
+            border: 1px solid rgba(255,255,255,0.24);
+        }
+        #contact form .af-input,
+        #contact form textarea,
+        #contact form select {
+            background-color: #121212;
+            color: #f5f5f5;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
+        #contact form .af-input:focus,
+        #contact form textarea:focus,
+        #contact form select:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
+        }
+        #contact form textarea {
+            min-height: 140px;
+        }
+        #contact form ::placeholder {
+            color: #9f9f9f;
+        }
+        select option {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+        footer.af-white {
+            background-color: #0f0f0f !important;
+            color: #f5f5f5;
+        }
+        footer.af-white a {
+            color: inherit;
+        }
+        footer.af-white .af-button.af-light-grey {
+            background-color: #f5f5f5 !important;
+            color: #111 !important;
+        }
+        footer.af-white .af-button.af-light-grey:hover {
+            background-color: #d9d9d9 !important;
+        }
+        .commitments-title,
+        .reservations-title {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .commitments-list,
+        .commitments-list * {
+            font-family: "Playfair Display", serif;
+        }
+        #reservations .af-ul.af-card,
+        #reservations .af-ul.af-card * {
+            font-family: "Playfair Display", serif;
+        }
+        #pricing .af-ul.af-card,
+        #pricing .af-ul.af-card * {
+            font-family: "Playfair Display", serif;
+        }
+        @media (min-width: 601px) {
+            .about-row {
+                display: flex;
+                gap: 16px;
+                align-items: stretch;
+            }
+            .about-row > .af-col {
+                display: flex;
+                flex-direction: column;
+            }
+            .about-row > .af-col ul.af-ul {
+                flex: 1 1 auto;
+            }
+            .about-row .commitments-list {
+                margin-top: 3.6rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .about-row .commitments-list {
+                margin-top: 24px;
+            }
+        }
+    </style>
+
+    <!-- Script léger pour activer les styles différés après le load (ou asap) -->
+    <script>
+        (function(){
+            function enableDeferredStyles(){
+                try {
+                    var s = document.getElementById('deferred-styles');
+                    if (s && s.media && s.media !== 'all') s.media = 'all';
+                } catch(e){}
+            }
+            // tenter d'appliquer rapidement sans bloquer : RAF + fallback timeout + load event
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(function(){
+                    setTimeout(enableDeferredStyles, 300);
+                });
+            } else {
+                window.addEventListener('load', enableDeferredStyles);
+                setTimeout(enableDeferredStyles, 1000);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <div class="af-top">
+        <div class="af-bar af-white af-card" id="myNavbar">
+            <a href="#home" class="af-bar-item af-button" style="padding:0 12px; margin-right:20px;">
+                <img src="images/logo.png" alt="Trattoria Moderna" class="navbar-logo" width="240" height="80" loading="lazy">
+            </a>
+            <div class="af-hide-small navbar-links">
+                <a href="#about" class="af-bar-item af-button"><i class="fa fa-info-circle"></i> À PROPOS</a>
+                <a href="#pricing" class="af-bar-item af-button"><i class="fa fa-cutlery"></i> MENU</a>
+                <a href="#reservations" class="af-bar-item af-button"><i class="fa fa-calendar"></i> RÉSERVATIONS</a>
+                <a href="#contact" class="af-bar-item af-button"><i class="fa fa-map-marker"></i> CONTACT</a>
+            </div>
+            <a href="javascript:void(0)" class="af-bar-item af-button af-hide-large af-hide-medium" onclick="w3_open()" style="margin-left:auto;">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu latéral pour mobile -->
+    <nav class="af-sidebar af-bar-block af-white af-card af-animate-left af-hide-medium af-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="af-bar-item af-button af-large af-padding-16">Fermer ×</a>
+    <a href="#home" onclick="w3_close()" class="af-bar-item af-button">ACCUEIL</a>
+    <a href="#about" onclick="w3_close()" class="af-bar-item af-button">À PROPOS</a>
+    <a href="#pricing" onclick="w3_close()" class="af-bar-item af-button">MENU</a>
+    <a href="#reservations" onclick="w3_close()" class="af-bar-item af-button">RÉSERVATIONS</a>
+    <a href="#contact" onclick="w3_close()" class="af-bar-item af-button">CONTACT</a>
+    </nav>
+
+    <!-- En-tête -->
+    <header class="bgimg-1 af-display-container af-grayscale-min" id="home">
+    <div class="af-display-left af-text-white hero-content">
+            <span class="af-jumbo af-hide-small hero-title">La modernité italienne.</span><br>
+            <span class="af-xxlarge af-hide-large af-hide-medium hero-title">La modernité italienne.</span><br>
+            <span class="af-large">Cuisine de saison, esprit trattoria et vins naturels sélectionnés avec passion.</span>
+            <p><a href="#reservations" class="af-button af-black af-padding-large af-large af-margin-top">Réserver une table</a></p>
+        </div>
+        <div class="af-display-bottomright af-text-grey af-large" style="padding: 30px 48px">
+            <a href="https://www.facebook.com/trattoriamoderna" target="_blank" rel="noopener" class="af-hover-opacity" aria-label="Facebook">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+            <a href="https://www.instagram.com/trattoria.moderna" target="_blank" rel="noopener" class="af-hover-opacity" aria-label="Instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a href="https://www.tripadvisor.com/Restaurant_Review-g188107" target="_blank" rel="noopener" class="af-hover-opacity" aria-label="Tripadvisor">
+                <i class="fa fa-tripadvisor"></i>
+            </a>
+        </div>
+    </header>
+	
+    <!-- 1) À PROPOS -->
+    <div class="af-container" id="about" style="padding: 72px 16px 40px;">
+        <div class="af-row-padding about-row" style="margin-top:24px;">
+            <div class="af-col l6 m12 af-padding-16">
+                <h3 class="section-title">Esprit de la maison</h3>
+                <p class="af-large">Trattoria Moderna célèbre une Italie contemporaine, lumineuse et généreuse. Dans notre salle baignée de lumière, les classiques transalpins se réinventent au contact des producteurs vaudois.</p>
+                <p>Le chef Luca Bianchi imagine chaque semaine un menu de saison où les pâtes fraîches maison côtoient des risotti réconfortants, des viandes maturées et une sélection marine tout droit arrivée de Ligurie. En salle, l'équipe vous accompagne avec le sourire et un service précis, sans formalisme.</p>
+                <p>Que ce soit pour un déjeuner d'affaires, un dîner entre amis ou une célébration familiale, nous façonnons des moments sur mesure avec une attention sincère au détail.</p>
+            </div>
+            <div class="af-col l6 m12 af-padding-16">
+                <ul class="af-ul af-card af-white commitments-list">
+                    <li class="af-black af-xlarge af-padding-24 commitments-title">Nos engagements</li>
+                    <li class="af-padding-16"><strong>Produits de saison</strong><br>Fruits, légumes et herbes issus de fermes locales partenaires et d'artisans italiens de confiance.</li>
+                    <li class="af-padding-16"><strong>Pâtes façonnées chaque matin</strong><br>Tagliolini, ravioli et gnocchi roulés à la main pour une texture soyeuse incomparable.</li>
+                    <li class="af-padding-16"><strong>Cave vivante</strong><br>Plus de 150 références bio ou en biodynamie, sélectionnées pour accompagner chaque assiette.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+	<!-- 1) MENU -->
+	<div class="af-container" id="pricing" style="padding-top: 50px; padding-bottom: 25px">
+        <h3 class="af-center section-title">LA CARTE</h3>
+        <p class="af-center af-large" style="margin-bottom:16px;">Une sélection resserrée qui évolue chaque semaine au rythme des saisons.</p>
+        <div class="af-row-padding" style="margin-top:8px">
+            <!-- Carte Antipasti -->
+            <div class="af-col l4 m6 af-margin-bottom">
+                <ul class="af-ul af-white af-center af-card af-hover-shadow">
+                    <li class="af-green af-xlarge af-padding-32">Antipasti &amp; crudi</li>
+                    <li class="af-padding-16">
+                        <strong>Carpaccio di branzino</strong><br>
+                        Céleri branche, huile au citron de Sorrente — CHF 22
+                    </li>
+                    <li class="af-padding-16">
+                        <strong>Burrata pugliese chaude</strong><br>
+                        Tomates confites, pesto de pistaches, basilic pourpre — CHF 19
+                    </li>
+                    <li class="af-padding-16">
+                        <strong>Arancini safran &amp; taleggio</strong><br>
+                        Coulis de datterino, gremolata d'agrumes — CHF 14
+                    </li>
+                    <li class="af-light-grey af-padding-24">
+                        <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Antipasti')">Réserver</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Carte Pâtes -->
+            <div class="af-col l4 m6 af-margin-bottom">
+                <ul class="af-ul af-white af-center af-card af-hover-shadow">
+                    <li class="af-black af-xlarge af-padding-32">Pâtes &amp; risotti</li>
+                    <li class="af-padding-16">
+                        <strong>Tagliolini al tartufo noir</strong><br>
+                        Crème légère, pecorino sarde, noisettes grillées — CHF 34
+                    </li>
+                    <li class="af-padding-16">
+                        <strong>Risotto allo zafferano</strong><br>
+                        Safran bio, parmesan 24 mois, jus de veau réduit — CHF 31
+                    </li>
+                    <li class="af-padding-16">
+                        <strong>Paccheri all'amatriciana</strong><br>
+                        Guanciale rôti, pomodoro San Marzano, pecorino romano — CHF 29
+                    </li>
+                    <li class="af-light-grey af-padding-24">
+                        <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Pâtes')">Réserver</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Carte Dolci -->
+            <div class="af-col l4 m12 af-margin-bottom">
+                <ul class="af-ul af-white af-center af-card af-hover-shadow">
+                    <li class="af-red af-xlarge af-padding-32">Dolci &amp; bar</li>
+                    <li class="af-padding-16">
+                        <strong>Tiramisù Moderna</strong><br>
+                        Mascarpone foisonné, biscuit café, poudre de cacao cru — CHF 12
+                    </li>
+                    <li class="af-padding-16">
+                        <strong>Sbrisolona &amp; crema al limone</strong><br>
+                        Amandes grillées, citron confit, gelato vanille — CHF 11
+                    </li>
+                    <li class="af-padding-16">
+                        <strong>Negroni signature</strong><br>
+                        Gin tessinois, vermouth infusé maison, bitter orange — CHF 16
+                    </li>
+                    <li class="af-light-grey af-padding-24">
+                        <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Réservation')">Réserver</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+	<!-- 2) AMBIANCE -->
+	<div class="af-container"id="work" style="padding: 25px;">
+    <h3 class="af-center section-title">L'AMBIANCE</h3>
+    <p class="af-center af-large" style="margin-bottom:16px;">Une table lumineuse, une cuisine ouverte et une équipe qui partage sa passion des saveurs italiennes.</p>
+        <div style="margin-top:8px">
+            <!-- Slideshow NOS TRAVAUX -->
+            <div class="slideshow-container">
+                <div class="slide-nav-left" onclick="plusSlides(-1)">
+                    <span class="slide-arrow">&#10094;</span>
+                </div>
+                <div class="slide-nav-right" onclick="plusSlides(1)">
+                    <span class="slide-arrow">&#10095;</span>
+                </div>
+
+<div class="mySlides fade" data-caption="Salle principale" data-link="#reservations" data-target="_self">
+    <picture>
+        <source srcset="images/Slide1.webp" type="image/webp">
+        <img src="images/Slide1.jpg" width="1400" height="604" loading="eager" fetchpriority="high" alt="Salle principale de la Trattoria Moderna à Lausanne">
+    </picture>
+</div>
+<div class="mySlides fade" data-caption="Cuisine ouverte &amp; bar à vins" data-link="#pricing" data-target="_self">
+    <picture>
+        <source srcset="images/Slide2.webp" type="image/webp">
+        <img src="images/Slide2.jpg" width="1400" height="606" loading="lazy" alt="Cuisine ouverte et bar à vins de la Trattoria Moderna">
+    </picture>
+</div>
+
+    <!-- Single caption element positioned relative to the slideshow container -->
+    <div class="text slide-caption" aria-hidden="false">
+        <a id="slide-link" href="#" target="_self">Découvrir notre univers</a>
+    </div>
+
+    </div>
+            </div>
+            <!-- Points indicateurs -->
+            <div style="text-align:center; margin-top:8px;">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 3) RÉSERVATIONS -->
+	<div class="af-container af-light-grey" id="reservations" style="padding: 40px 16px 32px;">
+        <h3 class="af-center section-title">RÉSERVATIONS</h3>
+        <p class="af-center af-large" style="margin-bottom:24px;">Service midi du mardi au vendredi &mdash; service du soir du mardi au samedi. Dimanche dédié aux événements privés.</p>
+        <div class="af-row-padding" style="max-width:1080px;margin:0 auto;">
+            <div class="af-col l6 m12 af-margin-bottom">
+                <ul class="af-ul af-white af-card">
+                    <li class="af-black af-xlarge af-padding-24 reservations-title">Horaires</li>
+                    <li class="af-padding-16"><strong>Déjeuner</strong><br>Mardi &ndash; Vendredi : 12h00 &ndash; 14h00</li>
+                    <li class="af-padding-16"><strong>Dîner</strong><br>Mardi &ndash; Samedi : 18h30 &ndash; 23h00</li>
+                    <li class="af-padding-16"><strong>Bar à vins</strong><br>Ouverture continue de 18h00 à minuit</li>
+                    <li class="af-padding-16"><strong>Fermeture hebdomadaire</strong><br>Dimanche soir &amp; lundi</li>
+                </ul>
+            </div>
+            <div class="af-col l6 m12 af-margin-bottom">
+                <div class="af-card af-white" style="height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                    <div class="af-padding-24">
+                        <h4 class="af-xlarge" style="margin-top:0;">Groupes &amp; privatisations</h4>
+                        <p>Pour les tablées à partir de 8 convives, les menus dégustation (3 ou 5 services) sont proposés sur demande. Nous privatisons également la mezzanine ou la totalité de la trattoria pour vos événements professionnels.</p>
+                        <p class="af-medium">Indiquez la date souhaitée, le nombre d'invités et vos préférences culinaires : nous vous répondons sous 24&nbsp;heures.</p>
+                    </div>
+                    <div class="af-padding-24 af-light-grey" style="text-align:center;">
+                        <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Privatisation')">Demander une privatisation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4) CONTACT -->
+	<div class="af-container af-light-grey" id="contact" style="padding-top: 25px; padding-bottom: 25px;">
+    <h3 class="af-center section-title">CONTACT &amp; ACCÈS</h3>
+    <p class="af-center af-large" style="margin-bottom:16px;">Notre équipe de réservation vous répond du mardi au samedi de 10h à 22h.</p>
+
+            <!-- Aperçu Google Map et panneau coordonnées -->
+            <div class="map-row" aria-label="Carte et coordonnées - Trattoria Moderna">
+        <div class="map-container" aria-hidden="false">
+                    <iframe
+                        id="gmap"
+                        title="Localisation - Trattoria Moderna"
+            data-src="https://www.google.com/maps?q=Trattoria+Moderna,+Rue+du+Grand-Pont+12,+1003+Lausanne&hl=fr&z=17&output=embed"
+            srcdoc="<p style='font-family:Montserrat,sans-serif;text-align:center;padding:1.5rem;background:#121212;color:#f5f5f5;'><strong>Carte en cours de chargement…</strong><br><a href='https://www.google.com/maps?q=Trattoria+Moderna,+Rue+du+Grand-Pont+12,+1003+Lausanne' target='_blank' rel='noopener' style='color:#8bb5ff;'>Ouvrir dans Google Maps</a></p>"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="map-info" aria-label="Coordonnées de l'emplacement">
+                    <h4 style="margin-top:0;">
+        <a href="https://www.google.com/maps?q=Trattoria+Moderna,+Rue+du+Grand-Pont+12,+1003+Lausanne" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">
+            <i class="fa fa-map-marker" aria-hidden="true"></i><b> Adresse</b>
+        </a>
+    </h4>
+    <p style="margin:6px 0 12px;">
+        Trattoria Moderna<br>Rue du Grand-Pont 12<br>1003 Lausanne
+    </p>
+
+                    <h4 style="margin-top:12px;">
+        <a href="tel:+41215551234" style="color:inherit; text-decoration:none;">
+            <i class="fa fa-phone" aria-hidden="true"></i><b> Téléphone</b>
+        </a>
+    </h4>
+    <p style="margin:6px 0 12px;">
+        <a href="tel:+41215551234" style="color:inherit; text-decoration:none;">+41 21 555 12 34</a><br>
+        <span class="af-small af-opacity">Whatsapp disponible de 10h à 22h</span>
+    </p>
+
+                    <h4 style="margin-top:12px;">
+		<a href="mailto:contact@trattoriamoderna.ch" style="color:inherit; text-decoration:none;">
+			<i class="fa fa-envelope" aria-hidden="true"></i><b> E-mail</b>
+		</a>
+	</h4>
+	<p style="margin:6px 0 12px;">
+		<a href="mailto:contact@trattoriamoderna.ch" style="color:inherit; text-decoration:none;">contact@trattoriamoderna.ch</a>
+	</p>
+
+                    <h4 style="margin-top:12px;">
+                        <i class="fa fa-car" aria-hidden="true"></i><b> Parking</b>
+                    </h4>
+                    <p style="margin:6px 0 0;">Parking Saint-François à 2&nbsp;minutes &ndash; lignes TL 1, 3, 7 et 9 arrêt "Saint-François".</p>
+                    <div class="map-cta">
+                        <a class="af-button af-black af-margin-top" href="https://www.google.com/maps/dir/?api=1&destination=Trattoria+Moderna,+Rue+du+Grand-Pont+12,+1003+Lausanne" target="_blank" rel="noopener">Itinéraire</a>
+                    </div>
+                </div>
+            </div>
+
+                        <form id="contact-form" action="https://formspree.io/f/mnnopgqo" method="POST">
+        <p><input id="contact-email" class="af-input af-border" type="email" placeholder="Email" required name="_replyto"></p>
+    <p><input id="contact-nom" class="af-input af-border" type="text" placeholder="Nom" required name="Nom"></p>
+    <p><input id="contact-prenom" class="af-input af-border" type="text" placeholder="Prénom" required name="Prénom"></p>
+    <p><input class="af-input af-border" type="tel" placeholder="Téléphone (facultatif)" name="Téléphone"></p>
+        <p><input class="af-input af-border" type="number" min="1" max="24" placeholder="Nombre de convives (facultatif)" name="Convives"></p>
+        <p><input class="af-input af-border" type="date" name="DateSouhaitee"></p>
+    <p>
+        <select id="contact-subject" class="af-input af-border" required name="Sujet">
+            <option value="" disabled selected>Sélectionnez un sujet</option>
+            <option value="reservation-dejeuner">Réservation déjeuner</option>
+            <option value="reservation-diner">Réservation dîner</option>
+            <option value="privatisation">Privatisation / Groupe</option>
+            <option value="traiteur">Chef à domicile &amp; traiteur</option>
+            <option value="autre">Autre demande</option>
+        </select>
+    </p>
+    <p><textarea id="contact-message" class="af-input af-border" placeholder="Précisez allergies, horaires souhaités ou message complémentaire" required name="Message" rows="5" style="resize: vertical; width:100%;"></textarea></p>
+  <div id="form-message" class="af-center" style="display:none; margin-top:12px; font-weight:600;"></div>
+  <p class="af-center" style="margin-top:16px">
+    <button class="af-button af-black contact-submit" type="submit" aria-label="Envoyer le message">
+      <span class="contact-content">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        <span>ENVOYER</span>
+      </span>
+    </button>
+  </p>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const msg = document.getElementById('form-message');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.style.display = 'block';
+    msg.style.color = '#f5f5f5';
+    msg.textContent = 'Envoi en cours...';
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+    msg.style.color = '#6BFFB8';
+        msg.textContent = '✅ Message envoyé avec succès ! Nous allons vous contacter dès que possible.';
+        form.reset();
+      } else {
+    msg.style.color = '#FF7A7A';
+        msg.textContent = '❌ Une erreur est survenue. Veuillez réessayer s\'il vous plaît.';
+      }
+    } catch (error) {
+    msg.style.color = '#FF7A7A';
+      msg.textContent = '❌ Erreur de connexion. Vérifiez votre connexion internet s\'il vous plaît.';
+    }
+  });
+</script>
+
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="af-center af-white af-padding-64">
+        <a href="#home" class="af-button af-light-grey">
+            <i class="fa fa-arrow-up af-margin-right"></i>Tout en haut
+        </a>
+        <p class="af-medium" style="margin-top:20px;">Cuisine maison, pâtes fraîches et produits de saison &ndash; service chaleureux garanti.</p>
+        <div class="af-xlarge af-section">
+            <a href="https://www.facebook.com/trattoriamoderna" target="_blank" rel="noopener" class="af-hover-opacity" aria-label="Facebook">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+            <a href="https://www.instagram.com/trattoria.moderna" target="_blank" rel="noopener" class="af-hover-opacity" aria-label="Instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a href="https://www.tripadvisor.com/Restaurant_Review-g188107" target="_blank" rel="noopener" class="af-hover-opacity" aria-label="Tripadvisor">
+                <i class="fa fa-tripadvisor"></i>
+            </a>
+        </div>
+        <p class="af-opacity">© 2025 Trattoria Moderna — Tous droits réservés</p>
+    </footer>
+
+    <!-- Script menu mobile et slideshow -->
+    <script>
+        function w3_open() {
+            const x = document.getElementById('mySidebar');
+            if (x.style.display === 'block') {
+                x.style.display = 'none';
+            } else {
+                x.style.display = 'block';
+            }
+        }
+        function w3_close() {
+            const x = document.getElementById('mySidebar');
+            x.style.display = 'none';
+        }
+
+        // Préparer le formulaire de réservation et faire défiler jusqu'à la section contact
+        function goToReservations(keyword) {
+            try {
+                const select = document.getElementById('contact-subject');
+                if (select) {
+                    const target = (keyword || '').toLowerCase();
+                    let matched = false;
+                    for (let i = 0; i < select.options.length; i++) {
+                        const option = select.options[i];
+                        if (!option.value) { continue; }
+                        const optionText = (option.text || '').toLowerCase();
+                        const optionValue = (option.value || '').toLowerCase();
+                        if (!target || optionText.includes(target) || optionValue.includes(target)) {
+                            select.selectedIndex = i;
+                            matched = true;
+                            break;
+                        }
+                    }
+                    if (!matched) {
+                        for (let i = 0; i < select.options.length; i++) {
+                            if (select.options[i].value) {
+                                select.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                const contactSection = document.getElementById('contact');
+                if (contactSection && contactSection.scrollIntoView) {
+                    try {
+                        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } catch (scrollErr) {
+                        contactSection.scrollIntoView();
+                    }
+                } else {
+                    window.location.hash = '#contact';
+                }
+
+                const emailField = document.getElementById('contact-email');
+                if (emailField) {
+                    setTimeout(function () {
+                        try { emailField.focus({ preventScroll: true }); }
+                        catch (focusErr) { try { emailField.focus(); } catch (_) {} }
+                    }, 360);
+                }
+            } catch (e) {
+                window.location.hash = '#contact';
+            }
+        }
+
+    // Make internal anchor links use smooth scrolling (skip links that already call goToReservations)
+        (function enableAnchorSmoothScroll(){
+            document.querySelectorAll('a[href^="#"]').forEach(function(a){
+                a.addEventListener('click', function(e){
+                    const href = a.getAttribute('href');
+                    if (!href || href.length <= 1) return; // ignore '#' or empty
+                    const onclickAttr = a.getAttribute('onclick') || '';
+                    // if this anchor déjà gère le scroll (goToReservations), ne rien faire
+                    if (/goToReservations\s*\(/.test(onclickAttr)) return;
+                    const targetId = href.slice(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        try {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } catch (err) {
+                            window.location.hash = href;
+                        }
+                        try {
+                            if (history && history.pushState) history.pushState(null, '', href);
+                        } catch (err) {}
+                        try {
+                            if (target.matches('input, select, textarea, button, [tabindex]')) {
+                                setTimeout(function () {
+                                    target.focus({ preventScroll: true });
+                                }, 320);
+                            }
+                        } catch (err) {}
+                        try { if (document.getElementById('mySidebar') && document.getElementById('mySidebar').style.display === 'block') w3_close(); } catch(e) {}
+                    }
+                }, false);
+            });
+        })();
+
+        // Déclenche le chargement de Google Maps uniquement quand nécessaire
+        (function deferMapLoad(){
+            const iframe = document.getElementById('gmap');
+            if (!iframe) return;
+            const mapSrc = iframe.dataset ? iframe.dataset.src : null;
+            if (!mapSrc) return;
+
+            const loadMap = function(){
+                if (iframe.src === mapSrc) return;
+                iframe.src = mapSrc;
+                iframe.removeAttribute('srcdoc');
+            };
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        if (entry.isIntersecting) {
+                            loadMap();
+                            observer.disconnect();
+                        }
+                    });
+                }, { rootMargin: '200px 0px' });
+                observer.observe(iframe);
+            } else {
+                window.addEventListener('load', loadMap, { once: true });
+                window.addEventListener('scroll', function onScroll(){
+                    loadMap();
+                    window.removeEventListener('scroll', onScroll);
+                });
+            }
+
+            iframe.addEventListener('focus', loadMap, { once: true });
+            iframe.addEventListener('click', loadMap, { once: true });
+        })();
+
+        // Slideshow JS
+        let slideIndex = 1;
+        let slideTimer; // timer pour l'auto-défilement
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].className += " active";
+
+            // Update centralized caption (centered relative to .slideshow-container)
+            try {
+                const activeSlide = slides[slideIndex-1];
+                const captionText = activeSlide ? (activeSlide.getAttribute('data-caption') || '') : '';
+                const captionLink = activeSlide ? (activeSlide.getAttribute('data-link') || '#') : '#';
+                const captionTarget = activeSlide ? (activeSlide.getAttribute('data-target') || '_blank') : '_blank';
+                const linkEl = document.getElementById('slide-link');
+                if (linkEl) {
+                    linkEl.textContent = captionText;
+                    linkEl.href = captionLink;
+                    linkEl.target = captionTarget;
+                }
+            } catch (e) {
+                // ignore caption update errors
+            }
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            showSlides(slideIndex);
+            resetSlideTimer();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlides(slideIndex);
+            resetSlideTimer();
+        }
+
+        function autoShowSlides() {
+            slideIndex++;
+            showSlides(slideIndex);
+            slideTimer = setTimeout(autoShowSlides, 5000);
+        }
+
+        function resetSlideTimer() {
+            clearTimeout(slideTimer);
+            slideTimer = setTimeout(autoShowSlides, 5000);
+        }
+
+        // Initialisation
+        showSlides(slideIndex);
+        slideTimer = setTimeout(autoShowSlides, 5000);
+    </script>
+</body>
+</html>
