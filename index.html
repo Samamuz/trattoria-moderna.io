@@ -1065,21 +1065,27 @@
                     <div class="slide-nav-right" onclick="plusSlides(1)">
                         <span class="slide-arrow">&#10095;</span>
                     </div>
-                    <div class="mySlides fade" data-caption="Salle principale" data-link="#reservations" data-target="_self">
+                    <div class="mySlides fade" data-caption="La salle principale">
                         <picture>
-                            <source srcset="images/Slide1.webp" type="image/webp">
+                            <source srcset="images/Slide1.jpg" type="image/jpg">
                             <img src="images/Slide1.jpg" width="1400" height="604" loading="eager" fetchpriority="high" alt="Salle principale de la Trattoria Moderna à Lausanne">
                         </picture>
                     </div>
-                    <div class="mySlides fade" data-caption="Cuisine ouverte &amp; bar à vins" data-link="#pricing" data-target="_self">
+                    <div class="mySlides fade" data-caption="La cuisine ouverte">
                         <picture>
-                            <source srcset="images/Slide2.webp" type="image/webp">
-                            <img src="images/Slide2.jpg" width="1400" height="606" loading="lazy" alt="Cuisine ouverte et bar à vins de la Trattoria Moderna">
+                            <source srcset="images/Slide2.jpg" type="image/jpg">
+                            <img src="images/Slide2.jpg" width="1400" height="606" loading="lazy" alt="Cuisine ouverte de Trattoria Moderna">
+                        </picture>
+                    </div>
+                    <div class="mySlides fade" data-caption="Notre cave à vin">
+                        <picture>
+                            <source srcset="images/Slide3.jpg" type="image/jpg">
+                            <img src="images/Slide3.jpg" width="1400" height="606" loading="lazy" alt="Cave à vin de Trattoria Moderna">
                         </picture>
                     </div>
                     <!-- Single caption element positioned relative to the slideshow container -->
                     <div class="text slide-caption" aria-hidden="false">
-                        <a id="slide-link" href="#" target="_self">Découvrir notre univers</a>
+                        <span id="slide-link">Découvrir notre univers</span>
                     </div>
                 </div>
             </div>
@@ -1087,6 +1093,7 @@
             <div style="text-align:center; margin-top:8px;">
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
             </div>
         </div>
     </div>
@@ -1459,13 +1466,9 @@
             try {
                 const activeSlide = slides[slideIndex-1];
                 const captionText = activeSlide ? (activeSlide.getAttribute('data-caption') || '') : '';
-                const captionLink = activeSlide ? (activeSlide.getAttribute('data-link') || '#') : '#';
-                const captionTarget = activeSlide ? (activeSlide.getAttribute('data-target') || '_blank') : '_blank';
                 const linkEl = document.getElementById('slide-link');
                 if (linkEl) {
                     linkEl.textContent = captionText;
-                    linkEl.href = captionLink;
-                    linkEl.target = captionTarget;
                 }
             } catch (e) {
                 // ignore caption update errors
