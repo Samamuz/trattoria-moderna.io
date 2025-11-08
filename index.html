@@ -49,7 +49,8 @@
         .bgimg-1 {
             background-position: center;
             background-size: cover;
-            background-image: url("images/background.jpeg");
+            background-image: url("images/background.jpg");
+            background-attachment: fixed;
             min-height: 100%;
         }
         .af-bar .af-button { padding: 16px; }
@@ -225,9 +226,9 @@
             flex: 0 1 300px;
             min-width: 260px;
             max-width: 340px;
-            background: #181818;
+            background: #1f1f1f;
             padding: 16px;
-            border-radius: 8px;
+            border-radius: 16px;
             box-shadow: 0 18px 32px rgba(0,0,0,0.42), 0 6px 20px rgba(0,0,0,0.36);
             color: #f5f5f5;
             line-height: 1.4;
@@ -279,6 +280,7 @@
             letter-spacing: 0.02em;
             margin-bottom: 0.6em;
             text-transform: uppercase;
+            margin-top: 0;
         }
         @media (max-width: 900px) {
             .section-title { font-size: 1.9rem; }
@@ -607,7 +609,6 @@
 
         /* --- Thème sombre Trattoria Moderna --- */
         html, body {
-            background-color: #352219;
             color: #f1f1f1;
         }
         body {
@@ -635,6 +636,27 @@
         .af-text-gray, .af-hover-text-gray:hover {
             color: #bdbdbd !important;
         }
+        #about,
+        #pricing,
+        #reservations,
+        #contact {
+            background-image: linear-gradient(140deg, rgba(0,0,0,0.92), rgba(0,0,0,0.86)), url("images/texture.webp");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 2rem 16px !important;
+            margin: 2rem 0 !important;
+            display: flow-root;
+        }
+        .group-priv-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+        .group-priv-card .af-light-grey {
+            background-color: transparent !important;
+            color: inherit !important;
+        }
         #myNavbar {
             display: flex;
             align-items: center;
@@ -661,8 +683,12 @@
             justify-content: center;
             font-size: 1.05em;
         }
+        @media (max-width: 840px) {
+            .navbar-links { display: none !important; }
+            #myNavbar .menu-toggle { display: inline-flex !important; }
+        }
         .af-bar.af-white {
-            background-color: #0f0f0f !important;
+            background-color: #1f1f1f !important;
             box-shadow: 0 12px 32px rgba(0,0,0,0.45);
         }
         .af-bar.af-white .af-button {
@@ -671,6 +697,10 @@
         .af-bar.af-white .af-button:hover {
             background-color: #f5f5f5 !important;
             color: #111 !important;
+        }
+        .af-bar.af-white .af-button.logo-link:hover {
+            background-color: transparent !important;
+            color: inherit !important;
         }
         .site-logo {
             color: #ffffff;
@@ -718,6 +748,9 @@
         .af-ul.af-white li:last-child {
             border-bottom: none;
         }
+        #pricing .af-ul.af-white.af-center.af-card {
+            background-color: #1f1f1f !important;
+        }
         #pricing .af-ul.af-white li {
             color: #eaeaea;
         }
@@ -726,12 +759,13 @@
         }
         #pricing .af-ul.af-white li.af-light-grey {
             color: #f5f5f5 !important;
+            background-color: #262626 !important;
         }
         #pricing .af-ul.af-white.af-center.af-card > li:first-child {
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
         }
         #pricing .af-ul.af-white.af-center.af-card > li.af-light-grey {
-            background-color: #141414 !important;
+            background-color: #262626 !important;
         }
         .af-container, .af-panel {
             color: inherit;
@@ -768,9 +802,17 @@
             background-color: #121212;
             color: #f5f5f5;
         }
+        .reservation-field {
+            display: none;
+        }
+        .reservation-field.active {
+            display: block;
+        }
         footer.af-white {
-            background-color: #0f0f0f !important;
+            background-color: #000000 !important;
             color: #f5f5f5;
+            background-image: none;
+            background-attachment: scroll;
         }
         footer.af-white a {
             color: inherit;
@@ -788,9 +830,19 @@
             font-weight: 700;
             letter-spacing: 0.02em;
         }
+        .commitments-list {
+            background: #1f1f1f;
+            border-radius: 16px;
+            overflow: hidden;
+        }
         .commitments-list,
         .commitments-list * {
             font-family: "Playfair Display", serif;
+        }
+        .reservations-schedule {
+            background: #1f1f1f;
+            border-radius: 16px;
+            overflow: hidden;
         }
         #reservations .af-ul.af-card,
         #reservations .af-ul.af-card * {
@@ -815,6 +867,17 @@
             }
             .about-row .commitments-list {
                 margin-top: 3.6rem;
+            }
+        }
+        @media (max-width: 1024px) {
+            .about-row {
+                flex-direction: column;
+            }
+            .about-row > .af-col {
+                width: 100%;
+            }
+            .about-row .commitments-list {
+                margin-top: 24px;
             }
         }
         @media (max-width: 600px) {
@@ -849,7 +912,7 @@
     <!-- Barre de navigation -->
     <div class="af-top">
         <div class="af-bar af-white af-card" id="myNavbar">
-            <a href="#home" class="af-bar-item af-button" style="padding:0 12px; margin-right:20px;">
+            <a href="#home" class="af-bar-item af-button logo-link" style="padding:0 12px; margin-right:20px;">
                 <img src="images/logo.png" alt="Trattoria Moderna" class="navbar-logo" width="240" height="80" loading="lazy">
             </a>
             <div class="af-hide-small navbar-links">
@@ -858,7 +921,7 @@
                 <a href="#reservations" class="af-bar-item af-button"><i class="fa fa-calendar"></i> RÉSERVATIONS</a>
                 <a href="#contact" class="af-bar-item af-button"><i class="fa fa-map-marker"></i> CONTACT</a>
             </div>
-            <a href="javascript:void(0)" class="af-bar-item af-button af-hide-large af-hide-medium" onclick="w3_open()" style="margin-left:auto;">
+            <a href="javascript:void(0)" class="af-bar-item af-button af-hide-large af-hide-medium menu-toggle" onclick="w3_open()" style="margin-left:auto;">
                 <i class="fa fa-bars"></i>
             </a>
         </div>
@@ -877,7 +940,7 @@
     <!-- En-tête -->
     <header class="bgimg-1 af-display-container af-grayscale-min" id="home">
     <div class="af-display-left af-text-white hero-content">
-            <span class="af-jumbo af-hide-small hero-title">La modernité italienne.</span><br>
+            <span class="af-jumbo af-hide-small hero-title">La cuisine italienne.</span><br>
             <span class="af-xxlarge af-hide-large af-hide-medium hero-title">La modernité italienne.</span><br>
             <span class="af-large">Cuisine de saison, esprit trattoria et vins naturels sélectionnés avec passion.</span>
             <p><a href="#reservations" class="af-button af-black af-padding-large af-large af-margin-top">Réserver une table</a></p>
@@ -896,8 +959,8 @@
     </header>
 	
     <!-- 1) À PROPOS -->
-    <div class="af-container" id="about" style="padding: 72px 16px 40px;">
-        <div class="af-row-padding about-row" style="margin-top:24px;">
+    <div class="af-container af-light-grey" id="about" style="padding: 2rem 16px;">
+        <div class="af-row-padding about-row" style="margin-top:0;">
             <div class="af-col l6 m12 af-padding-16">
                 <h3 class="section-title">Esprit de la maison</h3>
                 <p class="af-large">Trattoria Moderna célèbre une Italie contemporaine, lumineuse et généreuse. Dans notre salle baignée de lumière, les classiques transalpins se réinventent au contact des producteurs vaudois.</p>
@@ -916,10 +979,10 @@
     </div>
 
 	<!-- 1) MENU -->
-	<div class="af-container" id="pricing" style="padding-top: 50px; padding-bottom: 25px">
+    <div class="af-container af-light-grey" id="pricing" style="padding: 2rem 16px;">
         <h3 class="af-center section-title">LA CARTE</h3>
         <p class="af-center af-large" style="margin-bottom:16px;">Une sélection resserrée qui évolue chaque semaine au rythme des saisons.</p>
-        <div class="af-row-padding" style="margin-top:8px">
+        <div class="af-row-padding" style="margin-top:0;">
             <!-- Carte Antipasti -->
             <div class="af-col l4 m6 af-margin-bottom">
                 <ul class="af-ul af-white af-center af-card af-hover-shadow">
@@ -955,7 +1018,7 @@
                     </li>
                     <li class="af-padding-16">
                         <strong>Paccheri all'amatriciana</strong><br>
-                        Guanciale rôti, pomodoro San Marzano, pecorino romano — CHF 29
+                        Guanciale rôti, pomodoro San Marzano — CHF 29
                     </li>
                     <li class="af-light-grey af-padding-24">
                         <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Pâtes')">Réserver</button>
@@ -976,7 +1039,7 @@
                     </li>
                     <li class="af-padding-16">
                         <strong>Negroni signature</strong><br>
-                        Gin tessinois, vermouth infusé maison, bitter orange — CHF 16
+                        Gin tessinois, vermouth infusé maison — CHF 16
                     </li>
                     <li class="af-light-grey af-padding-24">
                         <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Réservation')">Réserver</button>
@@ -984,41 +1047,36 @@
                 </ul>
             </div>
         </div>
-    </div>
-
-	<!-- 2) AMBIANCE -->
-	<div class="af-container"id="work" style="padding: 25px;">
-    <h3 class="af-center section-title">L'AMBIANCE</h3>
-    <p class="af-center af-large" style="margin-bottom:16px;">Une table lumineuse, une cuisine ouverte et une équipe qui partage sa passion des saveurs italiennes.</p>
-        <div style="margin-top:8px">
-            <!-- Slideshow NOS TRAVAUX -->
-            <div class="slideshow-container">
-                <div class="slide-nav-left" onclick="plusSlides(-1)">
-                    <span class="slide-arrow">&#10094;</span>
+        <!-- 2) AMBIANCE -->
+        <div id="work" style="margin-top:0; padding:0;">
+            <h3 class="af-center section-title">L'AMBIANCE</h3>
+            <p class="af-center af-large" style="margin-bottom:16px;">Une table lumineuse, une cuisine ouverte et une équipe qui partage sa passion des saveurs italiennes.</p>
+            <div style="margin-top:8px">
+                <!-- Slideshow NOS TRAVAUX -->
+                <div class="slideshow-container">
+                    <div class="slide-nav-left" onclick="plusSlides(-1)">
+                        <span class="slide-arrow">&#10094;</span>
+                    </div>
+                    <div class="slide-nav-right" onclick="plusSlides(1)">
+                        <span class="slide-arrow">&#10095;</span>
+                    </div>
+                    <div class="mySlides fade" data-caption="Salle principale" data-link="#reservations" data-target="_self">
+                        <picture>
+                            <source srcset="images/Slide1.webp" type="image/webp">
+                            <img src="images/Slide1.jpg" width="1400" height="604" loading="eager" fetchpriority="high" alt="Salle principale de la Trattoria Moderna à Lausanne">
+                        </picture>
+                    </div>
+                    <div class="mySlides fade" data-caption="Cuisine ouverte &amp; bar à vins" data-link="#pricing" data-target="_self">
+                        <picture>
+                            <source srcset="images/Slide2.webp" type="image/webp">
+                            <img src="images/Slide2.jpg" width="1400" height="606" loading="lazy" alt="Cuisine ouverte et bar à vins de la Trattoria Moderna">
+                        </picture>
+                    </div>
+                    <!-- Single caption element positioned relative to the slideshow container -->
+                    <div class="text slide-caption" aria-hidden="false">
+                        <a id="slide-link" href="#" target="_self">Découvrir notre univers</a>
+                    </div>
                 </div>
-                <div class="slide-nav-right" onclick="plusSlides(1)">
-                    <span class="slide-arrow">&#10095;</span>
-                </div>
-
-<div class="mySlides fade" data-caption="Salle principale" data-link="#reservations" data-target="_self">
-    <picture>
-        <source srcset="images/Slide1.webp" type="image/webp">
-        <img src="images/Slide1.jpg" width="1400" height="604" loading="eager" fetchpriority="high" alt="Salle principale de la Trattoria Moderna à Lausanne">
-    </picture>
-</div>
-<div class="mySlides fade" data-caption="Cuisine ouverte &amp; bar à vins" data-link="#pricing" data-target="_self">
-    <picture>
-        <source srcset="images/Slide2.webp" type="image/webp">
-        <img src="images/Slide2.jpg" width="1400" height="606" loading="lazy" alt="Cuisine ouverte et bar à vins de la Trattoria Moderna">
-    </picture>
-</div>
-
-    <!-- Single caption element positioned relative to the slideshow container -->
-    <div class="text slide-caption" aria-hidden="false">
-        <a id="slide-link" href="#" target="_self">Découvrir notre univers</a>
-    </div>
-
-    </div>
             </div>
             <!-- Points indicateurs -->
             <div style="text-align:center; margin-top:8px;">
@@ -1030,12 +1088,12 @@
 
 
     <!-- 3) RÉSERVATIONS -->
-	<div class="af-container af-light-grey" id="reservations" style="padding: 40px 16px 32px;">
+    <div class="af-container af-light-grey" id="reservations" style="padding: 2rem 16px;">
         <h3 class="af-center section-title">RÉSERVATIONS</h3>
         <p class="af-center af-large" style="margin-bottom:24px;">Service midi du mardi au vendredi &mdash; service du soir du mardi au samedi. Dimanche dédié aux événements privés.</p>
         <div class="af-row-padding" style="max-width:1080px;margin:0 auto;">
             <div class="af-col l6 m12 af-margin-bottom">
-                <ul class="af-ul af-white af-card">
+                <ul class="af-ul af-white af-card reservations-schedule">
                     <li class="af-black af-xlarge af-padding-24 reservations-title">Horaires</li>
                     <li class="af-padding-16"><strong>Déjeuner</strong><br>Mardi &ndash; Vendredi : 12h00 &ndash; 14h00</li>
                     <li class="af-padding-16"><strong>Dîner</strong><br>Mardi &ndash; Samedi : 18h30 &ndash; 23h00</li>
@@ -1044,14 +1102,14 @@
                 </ul>
             </div>
             <div class="af-col l6 m12 af-margin-bottom">
-                <div class="af-card af-white" style="height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                <div class="af-card af-white group-priv-card" style="height:100%;display:flex;flex-direction:column;justify-content:space-between;">
                     <div class="af-padding-24">
-                        <h4 class="af-xlarge" style="margin-top:0;">Groupes &amp; privatisations</h4>
+                        <h4 class="af-xlarge">Groupes &amp; privatisations</h4>
                         <p>Pour les tablées à partir de 8 convives, les menus dégustation (3 ou 5 services) sont proposés sur demande. Nous privatisons également la mezzanine ou la totalité de la trattoria pour vos événements professionnels.</p>
                         <p class="af-medium">Indiquez la date souhaitée, le nombre d'invités et vos préférences culinaires : nous vous répondons sous 24&nbsp;heures.</p>
                     </div>
                     <div class="af-padding-24 af-light-grey" style="text-align:center;">
-                        <button type="button" class="af-button af-black af-padding-large af-wide" onclick="goToReservations('Privatisation')">Demander une privatisation</button>
+                        <button type="button" class="af-button af-black" onclick="goToReservations('Privatisation')">Demander une privatisation</button>
                     </div>
                 </div>
             </div>
@@ -1059,7 +1117,7 @@
     </div>
 
     <!-- 4) CONTACT -->
-	<div class="af-container af-light-grey" id="contact" style="padding-top: 25px; padding-bottom: 25px;">
+    <div class="af-container af-light-grey" id="contact" style="padding: 2rem 16px;">
     <h3 class="af-center section-title">CONTACT &amp; ACCÈS</h3>
     <p class="af-center af-large" style="margin-bottom:16px;">Notre équipe de réservation vous répond du mardi au samedi de 10h à 22h.</p>
 
@@ -1116,22 +1174,21 @@
             </div>
 
                         <form id="contact-form" action="https://formspree.io/f/mnnopgqo" method="POST">
-        <p><input id="contact-email" class="af-input af-border" type="email" placeholder="Email" required name="_replyto"></p>
-    <p><input id="contact-nom" class="af-input af-border" type="text" placeholder="Nom" required name="Nom"></p>
-    <p><input id="contact-prenom" class="af-input af-border" type="text" placeholder="Prénom" required name="Prénom"></p>
-    <p><input class="af-input af-border" type="tel" placeholder="Téléphone (facultatif)" name="Téléphone"></p>
-        <p><input class="af-input af-border" type="number" min="1" max="24" placeholder="Nombre de convives (facultatif)" name="Convives"></p>
-        <p><input class="af-input af-border" type="date" name="DateSouhaitee"></p>
-    <p>
-        <select id="contact-subject" class="af-input af-border" required name="Sujet">
-            <option value="" disabled selected>Sélectionnez un sujet</option>
-            <option value="reservation-dejeuner">Réservation déjeuner</option>
-            <option value="reservation-diner">Réservation dîner</option>
-            <option value="privatisation">Privatisation / Groupe</option>
-            <option value="traiteur">Chef à domicile &amp; traiteur</option>
-            <option value="autre">Autre demande</option>
-        </select>
-    </p>
+                        <p><input id="contact-nom" class="af-input af-border" type="text" placeholder="Nom" required name="Nom"></p>
+                    <p><input class="af-input af-border" type="tel" placeholder="Téléphone" name="Téléphone"></p>
+                    <p>
+                        <select id="contact-subject" class="af-input af-border" required name="Sujet">
+                            <option value="" disabled selected>Sélectionnez un sujet</option>
+                            <option value="reservation-dejeuner">Réservation déjeuner</option>
+                            <option value="reservation-diner">Réservation dîner</option>
+                            <option value="privatisation">Privatisation / Groupe</option>
+                            <option value="traiteur">Chef à domicile &amp; traiteur</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </p>
+                    <p class="reservation-field"><input class="af-input af-border" type="date" name="DateSouhaitee"></p>
+                    <p class="reservation-field"><input class="af-input af-border" type="time" name="HeureSouhaitee"></p>
+                    <p class="reservation-field"><input class="af-input af-border" type="number" min="1" max="24" placeholder="Nombre de personnes (facultatif)" name="Convives"></p>
     <p><textarea id="contact-message" class="af-input af-border" placeholder="Précisez allergies, horaires souhaités ou message complémentaire" required name="Message" rows="5" style="resize: vertical; width:100%;"></textarea></p>
   <div id="form-message" class="af-center" style="display:none; margin-top:12px; font-weight:600;"></div>
   <p class="af-center" style="margin-top:16px">
@@ -1145,7 +1202,28 @@
 </form>
 
 <script>
-  const form = document.getElementById('contact-form');
+    (function setupReservationFields(){
+        const select = document.getElementById('contact-subject');
+        const fields = document.querySelectorAll('.reservation-field');
+        if (!select || !fields.length) { return; }
+        const reservationValues = new Set(['reservation-dejeuner', 'reservation-diner', 'privatisation']);
+        const toggleFields = function(){
+            const shouldShow = reservationValues.has(select.value);
+            fields.forEach(function(field){
+                if (shouldShow) {
+                    field.classList.add('active');
+                } else {
+                    field.classList.remove('active');
+                    const input = field.querySelector('input');
+                    if (input) { input.value = ''; }
+                }
+            });
+        };
+        select.addEventListener('change', toggleFields);
+        toggleFields();
+    })();
+
+    const form = document.getElementById('contact-form');
   const msg = document.getElementById('form-message');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1163,6 +1241,18 @@
     msg.style.color = '#6BFFB8';
         msg.textContent = '✅ Message envoyé avec succès ! Nous allons vous contacter dès que possible.';
         form.reset();
+                try {
+                    const select = document.getElementById('contact-subject');
+                    if (select) {
+                        try {
+                            select.dispatchEvent(new Event('change'));
+                        } catch (evtErr) {
+                            try {
+                                if (typeof select.onchange === 'function') { select.onchange(); }
+                            } catch (_) {}
+                        }
+                    }
+                } catch (_) {}
       } else {
     msg.style.color = '#FF7A7A';
         msg.textContent = '❌ Une erreur est survenue. Veuillez réessayer s\'il vous plaît.';
@@ -1240,6 +1330,13 @@
                             }
                         }
                     }
+                    try {
+                        select.dispatchEvent(new Event('change'));
+                    } catch (evtErr) {
+                        try {
+                            if (typeof select.onchange === 'function') { select.onchange(); }
+                        } catch (_) {}
+                    }
                 }
 
                 const contactSection = document.getElementById('contact');
@@ -1253,11 +1350,11 @@
                     window.location.hash = '#contact';
                 }
 
-                const emailField = document.getElementById('contact-email');
-                if (emailField) {
+                const focusField = document.getElementById('contact-nom');
+                if (focusField) {
                     setTimeout(function () {
-                        try { emailField.focus({ preventScroll: true }); }
-                        catch (focusErr) { try { emailField.focus(); } catch (_) {} }
+                        try { focusField.focus({ preventScroll: true }); }
+                        catch (focusErr) { try { focusField.focus(); } catch (_) {} }
                     }, 360);
                 }
             } catch (e) {
